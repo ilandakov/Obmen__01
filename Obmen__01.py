@@ -1,10 +1,10 @@
 import requests
 import json
 from tkinter import *
-from tkinter import messagebox as nb
+from tkinter import messagebox as mb
 
 
-def exchange(mb=None):
+def exchange():
     code = entry.get()
 
     if code:
@@ -14,7 +14,7 @@ def exchange(mb=None):
             data = response.json()
             if code in data['rates']:
                 exchange_rate = data['rates'][code]
-                mb.showinfo("Курс обмена", f"Курс: {exchange_rate} {code} за 1 доллар")
+                mb.showinfo("Курс обмена", f"Курс: {exchange_rate:.2f} {code} за 1 доллар")
             else:
                 mb.showerror("Ощибка!", f"Валюта {code}не найдена!")
         except Exception as e:
